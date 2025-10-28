@@ -2,19 +2,19 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Youverify Sandbox Test</title>
+  <title>Youverify Live vForm</title>
   <script src="https://cdn.jsdelivr.net/npm/youverify-sdk/dist/index.js"></script>
 </head>
 <body>
-  <h1>🎯 Test Youverify Sandbox vForm</h1>
+  <h1>🎯 Test Youverify LIVE vForm</h1>
   <button id="verify-btn">Ouvrir le formulaire KYC</button>
 
   <script>
-    // Étape 1 : configurer ton module
     const vFormModule = new YouverifySDK.vForm({
-      vFormId: "690116f91231c6f9242d67f7",  
-      publicMerchantKey: "68e9989ac4565b91106f066c",  
-      sandboxEnvironment: false,
+      vFormId: "690116f91231c6f9242d67f7",  // ✅ Ton vForm LIVE
+      publicMerchantKey: "68e9989ac4565b91106f066c",  // ✅ Ta clé publique (pas l’API key)
+      sandboxEnvironment: false,  // ✅ Mode LIVE
+
       personalInformation: {
         firstName: "Pape",
         lastName: "Yade",
@@ -36,14 +36,12 @@
       }
     });
 
-    // Étape 2 : initialiser le module
     try {
       vFormModule.initialize();
     } catch (error) {
       console.error("Erreur d'initialisation :", error);
     }
 
-    // Étape 3 : démarrer le process quand on clique sur le bouton
     document.getElementById("verify-btn").addEventListener("click", () => {
       vFormModule.start();
     });
